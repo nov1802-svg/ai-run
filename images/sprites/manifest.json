@@ -1,0 +1,14 @@
+﻿{
+    "white":  {
+                  "run":  5,
+                  "recover":  4,
+                  "front":  1,
+                  "hurt":  4
+              },
+    "yellow":  {
+                   "run":  5,
+                   "recover":  4,
+                   "front":  1,
+                   "hurt":  4
+               }
+}

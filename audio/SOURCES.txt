@@ -1,0 +1,22 @@
+All assets below are used under CC0 (public domain).
+Sources: OpenGameArt.org
+
+bgm-lobby.mp3
+  Loaben — cinameng
+  https://opengameart.org/content/loaben
+
+bgm-game.mp3
+  Net Infiltration (loop) — vitalezzz
+  https://opengameart.org/content/net-infiltration
+
+sfx-heal.wav
+  health_restore.wav — Spring Spring (Magic Words + Healing)
+  https://opengameart.org/content/magic-words-healing-sound-effect
+
+sfx-hit.mp3
+  playerhit.mp3 — GreyFrogGames
+  https://opengameart.org/content/player-hit-damage
+
+sfx-data.mp3
+  Item Pickup — Joth (7 Assorted Sound Effects)
+  https://opengameart.org/content/7-assorted-sound-effects-menu-level-up

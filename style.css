@@ -1,0 +1,314 @@
+:root {
+  --cyan: #3ee0ff;
+  --pink: #ff4fd8;
+  --ink: #e8f7ff;
+  --deep: #07111f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(62, 224, 255, 0.16), transparent 26%),
+    radial-gradient(circle at 84% 88%, rgba(255, 79, 216, 0.14), transparent 24%),
+    #04060f;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(90, 150, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 150, 255, 0.08) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at center, #000 30%, transparent 78%);
+}
+
+#frame {
+  position: relative;
+  width: min(430px, calc(100vw - 20px));
+  height: min(860px, calc(100dvh - 20px));
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--deep);
+  box-shadow:
+    0 0 0 1px rgba(62, 224, 255, 0.35),
+    0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.hidden { display: none !important; }
+
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 22px 32px;
+  text-align: center;
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(4, 10, 22, 0.55), rgba(4, 10, 22, 0.86));
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--cyan);
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+}
+
+.eyebrow.danger { color: #ff6b8a; }
+
+h1, h2 {
+  margin: 0;
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 0.9;
+  text-shadow: 0 0 24px rgba(62, 224, 255, 0.65);
+}
+
+h2 { font-size: 28px; }
+
+.subtitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.lead, .fine {
+  margin: 0;
+  color: rgba(232, 247, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.primary, .ghost {
+  min-width: 210px;
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.primary {
+  border: 0;
+  color: #041018;
+  background: linear-gradient(180deg, #8af3ff, #2f9dff);
+  box-shadow: 0 0 24px rgba(62, 224, 255, 0.4);
+}
+
+.ghost {
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid rgba(62, 224, 255, 0.45);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.chars {
+  width: min(100%, 380px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.char {
+  padding: 12px 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(62, 224, 255, 0.2);
+  background: radial-gradient(circle at 50% 35%, #1a3e5e, #0b1628 72%);
+  color: white;
+}
+
+.char img {
+  width: 100%;
+  height: 168px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.35));
+}
+
+.char .name {
+  display: block;
+  margin-top: 6px;
+  font-weight: 900;
+}
+
+.char.selected {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan), 0 0 26px rgba(62, 224, 255, 0.35);
+}
+
+.char.selected .name::before {
+  content: "✓ ";
+  color: var(--cyan);
+}
+
+.help-list {
+  width: min(100%, 360px);
+  margin: 4px 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.help-list li {
+  list-style: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(8, 22, 40, 0.62);
+  border: 1px solid rgba(62, 224, 255, 0.16);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.4em;
+  margin: 0 2px;
+  padding: 0 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(62, 224, 255, 0.45);
+  background: rgba(62, 224, 255, 0.12);
+  font-family: inherit;
+  text-align: center;
+}
+
+.stats {
+  width: min(100%, 300px);
+  margin: 4px 0;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(232, 247, 255, 0.12);
+}
+
+.stats dt {
+  color: rgba(232, 247, 255, 0.62);
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.stats dd {
+  margin: 0;
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+}
+
+.new-best {
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #041018;
+  background: #ffe56a;
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 16px 16px 0;
+  pointer-events: none;
+}
+
+.hud-top, .hud-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+#lives {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.score-block {
+  text-align: right;
+}
+
+.score-block span, .hud-sub {
+  color: rgba(232, 247, 255, 0.72);
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.score-block strong {
+  display: block;
+  font-family: Orbitron, "Trebuchet MS", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.hud-sub { margin-top: 6px; }
+
+#controls {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 10px;
+}
+
+#controls button {
+  height: 54px;
+  border: 1px solid rgba(62, 224, 255, 0.4);
+  border-radius: 16px;
+  color: white;
+  background: rgba(6, 16, 32, 0.55);
+  font-size: 22px;
+  font-weight: 900;
+  backdrop-filter: blur(8px);
+}
+
+#pad-jump { font-size: 16px; letter-spacing: 0.08em; }
