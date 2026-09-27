@@ -23,6 +23,20 @@ HTML Canvas 기반 3레인 러닝 게임입니다. 바이러스를 피하고 백
 powershell -ExecutionPolicy Bypass -File .\tools\SliceSpriteSheets.ps1
 ```
 
+## Vercel 배포
+
+GitHub 저장소와 연결해 정적 사이트로 배포합니다.
+
+1. [Vercel](https://vercel.com) 로그인 (GitHub 계정 연동)
+2. **Add New → Project** → `nov1802-svg/ai-run` Import
+3. 설정 확인 후 **Deploy**
+   - Framework Preset: **Other**
+   - Build Command: *(비움)*
+   - Output Directory: `.` (루트)
+4. 완료 후 `https://ai-run-*.vercel.app` 주소에서 플레이
+
+저장소에 `vercel.json`이 포함되어 있어 별도 빌드 없이 `index.html`이 바로 서비스됩니다.
+
 ## 라이선스
 
 게임 코드: 이 저장소 기준 자유 이용 (학습·포트폴리오용).
